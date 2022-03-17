@@ -61,6 +61,7 @@ Things you may want to cover:
 - has_one :users
 - has_one :purchase
 
+
 ## purchaseテーブル(購入記録)
 
 |Column              |Type      |Options                       |
@@ -72,6 +73,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 - has_one :delivery
+
 
 ## deliveriesテーブル(発送先情報)
 
