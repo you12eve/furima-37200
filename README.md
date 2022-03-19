@@ -34,31 +34,32 @@ Things you may want to cover:
 |encrypted_password (パスワード)|string |null: false              |
 |email (メールアドレス)          |string |null: false, unique: true|
 |last_name(苗字)               |string |null: false              |
-|last_kana(苗字カナ)            |strin  |null: false              |
+|last_kana(苗字カナ)            |string |null: false              |
 |first_name(名前)              |string |null: false              |
 |first_kana(名前カナ)           |string |null: false              |
-|birthday(誕生日)               |integer|null: false             |
-|seller(出品者)                 |references|foreign_key: true    |
+|birthday(誕生日)               |date  |null: false             |
 
 ###　アソシエーション
 - has_many :items
+- has_many :purchases
 
 
 ## itemsテーブル(商品情報)
 
-|Column             |Type               |Options                       |
-|-------------------|-------------------|------------------------------|
-|title (商品名)      |string             |null: false                   |
-|price (商品の価格)   |integer            |null: false                   |
-|seller(出品者)      |references         |null: false, foreign_key: true|
-|category(カテゴリー) |string             |null: false                   |
-|condition(商品の状態)|string             |null: false                   |
-|charge(配送料の負担) |string             |null: false                   |
-|source(発送元の地域) |string             |null: false                   |
-|date(発送日の目安)   |string             |null: false                   |
+|Column                         |Type               |Options                       |
+|-------------------------------|-------------------|------------------------------|
+|title (商品名)                  |string             |null: false                   |
+|description(商品説明)            |text               |null: false                  |
+|price (商品の価格)               |integer            |null: false                   |
+|user(出品者)                    |references         |null: false, foreign_key: true|
+|category_id(カテゴリー)          |integer            |null: false                   |
+|condition_id(商品の状態)         |integer            |null: false                   |
+|charge_id(配送料の負担)          |integer            |null: false                   |
+|source_id(発送元の地域)          |integer            |null: false                   |
+|scheduled_day_id(発送日の目安)   |integer            |null: false                   |
 
 ###　アソシエーション
-- has_one :users
+- belongs_to :user
 - has_one :purchase
 
 
@@ -66,8 +67,8 @@ Things you may want to cover:
 
 |Column              |Type      |Options                       |
 |--------------------|----------|------------------------------|
-|buyer (買い手)       |references|null: false, foreign_key: true|
-|purchase_item(購入物)|references|null: false, foreign_key: true| 
+|user (買い手)        |references|null: false, foreign_key: true|
+|item(購入物)         |references|null: false, foreign_key: true| 
 
 ###　アソシエーション
 - belongs_to :user
@@ -77,13 +78,15 @@ Things you may want to cover:
 
 ## deliveriesテーブル(発送先情報)
 
-|Column                  |Type|Options    |
-|------------------------|----|-----------|
-|post_address(郵便番号)    |string|null: false|
-|municipality(市区町村)    |string|null: false|
-|address(番地)            |string|null: false|
-|building(建物名)         |string|null: false|
-|phone_number(電話番号)   |integer| null: false|
+|Column                  |Type  |Options                       |
+|------------------------|------|------------------------------|
+|post_address(郵便番号)   |string|null: false                   |
+|source_id(都道府県)      |integer|null: false                  |
+|municipality(市区町村)   |string|null: false                   |
+|address(番地)            |string|null: false                  |
+|building(建物名)         |string|                              |
+|phone_number(電話番号)   |string| null: false                  |
+|purchase(購入記録)       |string|null: false, foreign_key: true|
 
 ###　アソシエーション
 - belongs_to :purchase
