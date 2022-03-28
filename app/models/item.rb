@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
   validates :title, presence: true
   validates :discription, presence: true
   validates :price, presence: true
@@ -8,7 +9,7 @@ class Item < ApplicationRecord
   validates :source_id, presence: true
   validates :scheduled_day_id, presence: true
 
-
+  has_one_attached :image
   belongs_to :user
   #has_one :purchase
 end
