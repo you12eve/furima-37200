@@ -5,6 +5,7 @@ class Item < ApplicationRecord
     belongs_to :condition
     belongs_to :Charge
     belongs_to :Source
+    belongs_to :Scheduled_day
 
 
   validates :title,            presence: true
