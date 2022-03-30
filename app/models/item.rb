@@ -4,6 +4,7 @@ class Item < ApplicationRecord
     belongs_to :category
     belongs_to :condition
     belongs_to :Charge
+    belongs_to :Source
 
 
   validates :title,            presence: true
