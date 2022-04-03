@@ -3,9 +3,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :category
     belongs_to :condition
-    belongs_to :Charge
-    belongs_to :Source
-    belongs_to :Scheduled_day
+    belongs_to :charge
+    belongs_to :source
+    belongs_to :scheduled_day
 
 
   validates :title,            presence: true
