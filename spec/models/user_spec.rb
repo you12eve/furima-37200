@@ -105,7 +105,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
   
-      it "last_name:全角(漢字・カナ・かな)必須" do
+      it "las t_name:全角(漢字・カナ・かな)必須" do
         @user.last_name =  'tanaka'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name is invalid')
