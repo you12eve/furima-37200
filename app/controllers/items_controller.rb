@@ -1,16 +1,9 @@
 class ItemsController < ApplicationController
-  
-  
+  before_action :authenticate_user!, except: [:show, :index]
   def index
-    
   end
 
   def new
-    if user_signed_in? 
-      @item = Item.new
-    else
-      render template:'devise/sessions/new'
-    end
   end
 
   def create
@@ -21,9 +14,11 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
+
   private
+
   def item_params
-    params.require(:item).permit(:title, :discription, :price, :category_id, :condition_id, :charge_id, :source_id, :scheduled_day_id, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:title, :discription, :price, :category_id, :condition_id, :charge_id, :source_id,
+                                 :scheduled_day_id, :image).merge(user_id: current_user.id)
   end
 end
