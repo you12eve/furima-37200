@@ -31,7 +31,7 @@ Things you may want to cover:
 |Column                       |Type   |Options                  |
 |-----------------------------|-------|-------------------------|
 |nickname                     |string |null: false              |
-|encrypted_password (パスワード)|string |null: false              |
+|encrypted_ password(パスワード)|string |null: false              |
 |email (メールアドレス)          |string |null: false, unique: true|
 |last_name(苗字)               |string |null: false              |
 |last_kana(苗字カナ)            |string |null: false              |
