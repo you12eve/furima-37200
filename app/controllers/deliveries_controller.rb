@@ -1,2 +1,3 @@
 class DeliveriesController < ApplicationController
+  
 end
