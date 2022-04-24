@@ -17,7 +17,7 @@ class PurchaseDelivery
   end
 
   def save
-    purchase = Purchase.create(price: price, token: token, user_id: user_id, item_id: item_id)
+    purchase = Purchase.create(price: price, user_id: user_id, item_id: item_id)
     Delivery.create(post_address: post_address, source_id: source_id, municipality: municipality, 
                     address: address, building: building, phone_number: phone_number, purchase_id: purchase.id)
   end
