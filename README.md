@@ -63,7 +63,7 @@ Things you may want to cover:
 - has_one :purchase
 
 
-## purchaseテーブル(購入記録)
+## purchasesテーブル(購入記録)
 
 |Column              |Type      |Options                       |
 |--------------------|----------|------------------------------|
@@ -74,7 +74,6 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 - has_one :delivery
-- has_one :order
 
 
 ## deliveriesテーブル(発送先情報)
@@ -90,11 +89,4 @@ Things you may want to cover:
 |purchase(購入記録)       |string|null: false, foreign_key: true|
 
 ###　アソシエーション
-- belongs_to :purchase
-
-## orderテーブル(クレジットカード情報 )
-|Column                   |Type   |Options                   |
-|price(購入金額)           |integer|null: false               |
-
-### アソシエーション
 - belongs_to :purchase
