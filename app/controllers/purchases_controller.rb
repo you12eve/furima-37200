@@ -1,8 +1,6 @@
 class PurchasesController < ApplicationController 
   before_action :authenticate_user!, only: :index
   before_action :move_to_index, only: [:index, :create]
-  before_action :sold_out, only: [:index, :create]
-  before_action :prevent_url, only: [:index, :create]
   def index
     @item = Item.find(params[:item_id])
     @purchase_delivery = PurchaseDelivery.new
@@ -36,16 +34,6 @@ class PurchasesController < ApplicationController
   end
   def move_to_index
     @item = Item.find(params[:item_id])
-    unless @item.user_id == current_user.id
-      redirect_to root_path
-    end
-  end
-  def sold_out
-    if @item.user_id != current_user.id || @item.purchase != nil
-      redirect_to root_path
-    end
-  end
-  def prevent_url
     if @item.user_id == current_user.id || @item.purchase != nil
       redirect_to root_path
     end
