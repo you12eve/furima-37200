@@ -11,8 +11,8 @@ class PurchaseDelivery
 
     validates :post_address, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :source_id,    numericality: { other_than: 1, message: "can't be blank" }
-    validates :municipality, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-    validates :address,      format: { with: /\A[-ぁ-んァ-ヶ一-龥々ー0-9]+\z/ }
+    validates :municipality
+    validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/}
   end
 

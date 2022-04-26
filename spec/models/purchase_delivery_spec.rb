@@ -49,27 +49,17 @@ RSpec.describe PurchaseDelivery, type: :model do
       it 'municipalityが空だと保存できない' do
         @purchase_delivery.municipality = ''
         @purchase_delivery.valid?
-        expect(@purchase_delivery.errors.full_messages).to include("Municipality can't be blank", "Municipality is invalid")
-      end
-      it 'municipalityが全角かなカナ漢字以外だと保存できない' do
-        @purchase_delivery.municipality = '11aaa'
-        @purchase_delivery.valid?
-        expect(@purchase_delivery.errors.full_messages).to include("Municipality is invalid")
+        expect(@purchase_delivery.errors.full_messages).to include("Municipality can't be blank")
       end
       it 'addressが空だと保存できない' do
         @purchase_delivery.address = ''
         @purchase_delivery.valid?
-        expect(@purchase_delivery.errors.full_messages).to include("Address can't be blank", "Address is invalid")
-      end
-      it 'addressに記号が含まれていると保存できない' do
-        @purchase_delivery.address = '**//'
-        @purchase_delivery.valid?
-        expect(@purchase_delivery.errors.full_messages).to include("Address is invalid")
+        expect(@purchase_delivery.errors.full_messages).to include("Address can't be blank")
       end
       it 'phone_numberが空だと保存できない' do
         @purchase_delivery.phone_number = ''
         @purchase_delivery.valid?
-        expect(@purchase_delivery.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid")
+        expect(@purchase_delivery.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberに半角数字以外が含まれていると保存できない' do
         @purchase_delivery.phone_number = '090????????'
@@ -80,6 +70,26 @@ RSpec.describe PurchaseDelivery, type: :model do
         @purchase_delivery.phone_number = '090000'
         @purchase_delivery.valid?
         expect(@purchase_delivery.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'phone_numberが12文字以上だと保存できない' do
+        @purchase_delivery.phone_number = '090000000000000'
+        @purchase_delivery.valid?
+        expect(@purchase_delivery.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'phone_numberに半角数字以外が含まれている場合は保存できない（※半角数字以外が一文字でも含まれていれば良い' do
+        @purchase_delivery.phone_number = 'ああああああ'
+        @purchase_delivery.valid?
+        expect(@purchase_delivery.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'userが紐付いていなければ保存できない' do
+        @purchase_delivery.user_id = nil
+        @purchase_delivery.valid?
+        expect(@purchase_delivery.errors.full_messages).to include("User can't be blank")
+      end
+      it 'itemが紐付いていなければ保存できない' do
+        @purchase_delivery.item_id = nil
+        @purchase_delivery.valid?
+        expect(@purchase_delivery.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
