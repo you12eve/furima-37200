@@ -63,7 +63,7 @@ Things you may want to cover:
 - has_one :purchase
 
 
-## purchaseテーブル(購入記録)
+## purchasesテーブル(購入記録)
 
 |Column              |Type      |Options                       |
 |--------------------|----------|------------------------------|
