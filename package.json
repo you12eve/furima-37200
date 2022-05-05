@@ -1,5 +1,5 @@
 {
-  "name": "furima_37200",
+  "name": "furima-37200",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
