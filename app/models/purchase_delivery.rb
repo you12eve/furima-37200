@@ -9,7 +9,7 @@ class PurchaseDelivery
     validates :token
 
     validates :post_address, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :source_id,    numericality: { other_than: 1, message: "can't be blank" }
+    validates :source_id,    numericality: { other_than: 1, message: "を選択してください" }
     validates :municipality
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/}
